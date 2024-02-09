@@ -1,0 +1,15 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+      <nav class="footer__nav">
+        {% for item in contacts %}
+        <ul class="footer__nav__contacts">
+          <span><i class="fa-solid fa-{{ item.fontawesome}}"></i></span>
+          <h5>{{ item.title }}</h5>
+          <li>{{ item.line|linebreaksbr }}</li>
+        </ul>
+        {% endfor %}
+      </nav>
+    </div>
+  </footer>
+  <li><a href="mailto:coderun@gmail.com">© 2023 coderun</a></li>
