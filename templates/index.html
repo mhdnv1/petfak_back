@@ -2,125 +2,98 @@
 {% load static %}
 {% block content %}
 {% include 'include/header.html' %}
-    <div class="container">
-      <div class="content">
-        <!-- sidebar left -->
-        {% include 'include/sidebar.html' %}
-        <!-- center -->
-        <main class="main">
-          <section class="carusel">
-            <div id="carouselExampleCaptions" class="carousel slide">
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleCaptions"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div class="carousel-inner">
-                {% for item in sliders %}
-                <div class="carousel-item active">
-                  <img
-                    style="height: 500px; object-fit: cover"
-                    src="{{ item.image.url }}"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ item.title }}</h5>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </section>
-          <section class="news">
-            <h3>НОВОСТИ</h3>
-            <div class="news__cards">
-              {% for item in news %}
-              <div class="news__card">
-                <a href="{% url 'news_details' setting.id %}">
-                  <img src="{{ item.image.url }}" alt="" />
-                  <p>
-                    {{ item.description }}
-                  </p>
-                  <span> {{ item.created|date:"Y-m-d H:i:s" }}</span>
-                </a>
-              </div>
-              {% endfor %}
-            </div>
-          </section>
-        </main>
-        <!-- sidebar right  -->
-        <div class="sidebar__right">
-          <div class="sidebar__right-media">
-            <img src="{% static 'src/images/dekan.jpg' %}" alt="dekan" />
-            <p>И.о.декана</p>
-            <h3>
-              Муратбаев Бактыбек <br />
-              Бакасович
-            </h3>
+<div class="container">
+  <div class="content">
+    <!-- sidebar left -->
+    {% include 'include/sidebar.html' %}
+    <!-- center -->
+    <main class="main">
+      <section class="carusel">
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
-          <nav class="sidebar__nav">
-            <article>
-              <a href="{% url 'appeal' %}">
-                <span><i class="fa-solid fa-microphone"></i></span>
-                ОБРАЩЕНИЕ К ДЕКАНУ
-              </a>
-            </article>
-            <article>
-              <a href="{% url 'biography' %}">
-                <span><i class="fa-solid fa-copy"></i></span>
-                БИОГРАФИЯ ДЕКАНА
-              </a>
-            </article>
-          </nav>
-          <div class="sidebar__right-pages">
-            <a href="{% url 'announcement' %}"><h3>ОБЪЯВЛЕНИЯ</h3></a>
-            <a href="{% url 'albums' %}"><h3>ФОТОАЛЬБОМЫ</h3></a>
-            <a href="{% url 'videos' %}"><h3>ВИДЕОЗАПИСИ</h3></a>
+          <div class="carousel-inner">
+            {% for item in sliders %}
+            <div class="carousel-item active">
+              <img style="height: 500px; object-fit: cover" src="{{ item.image.url }}" class="d-block w-100"
+                alt="..." />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ item.title }}</h5>
+              </div>
+            </div>
+            {% endfor %}
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
+      </section>
+      <section class="news">
+        <h3>НОВОСТИ</h3>
+        <div class="news__cards">
+          {% for item in news %}
+          <div class="news__card">
+            <a href="{% url 'news_details' setting.id %}">
+              <img src="{{ item.image.url }}" alt="" />
+              <p>
+                {{ item.description }}
+              </p>
+              <span> {{ item.created|date:"Y-m-d H:i:s" }}</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+    <!-- sidebar right  -->
+    <div class="sidebar__right">
+      <div class="sidebar__right-media">
+        <img src="{% static 'src/images/dekan.jpg' %}" alt="dekan" />
+        <p>Зав.кафедры "психология"</p>
+        <h3>
+          Жолдошева Акчач Олмасовна
+        </h3>
+      </div>
+      <nav class="sidebar__nav">
+        <article>
+          <a href="{% url 'appeal' %}">
+            <span><i class="fa-solid fa-microphone"></i></span>
+            ОБРАЩЕНИЕ К ДЕКАНУ
+          </a>
+        </article>
+        <article>
+          <a href="{% url 'biography' %}">
+            <span><i class="fa-solid fa-copy"></i></span>
+            БИОГРАФИЯ ДЕКАНА
+          </a>
+        </article>
+      </nav>
+      <div class="sidebar__right-pages">
+        <a href="{% url 'announcement' %}">
+          <h3>ОБЪЯВЛЕНИЯ</h3>
+        </a>
+        <a href="{% url 'albums' %}">
+          <h3>ФОТОАЛЬБОМЫ</h3>
+        </a>
+        <a href="{% url 'videos' %}">
+          <h3>ВИДЕОЗАПИСИ</h3>
+        </a>
       </div>
     </div>
-    {% include 'include/footer.html' %}
+  </div>
+</div>
+{% include 'include/footer.html' %}
 {% endblock %}
